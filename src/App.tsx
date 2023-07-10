@@ -1,6 +1,6 @@
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Singup from "./Interfaces/Singup";
-import Main from "./Interfaces/Main";
+import Singup from "./Pages/Singup";
+import Main from "./Pages/Main";
 
 function App() {
   return (
