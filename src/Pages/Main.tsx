@@ -4,6 +4,7 @@ import Card from "../Components/Card";
 import { CardType } from "../Interfaces/Card";
 import PlayAgainBtn from "../Components/PlayAgainBtn";
 import WinModal from "../Components/WinModal";
+import LoseModal from "../Components/LoseModal";
 export const handleNewGameContext = createContext<() => void>(() => {});
 type difficultyType = "easy" | "hard" | "mid";
 const Main = () => {
@@ -12,6 +13,7 @@ const Main = () => {
   const [attempts, setAttempts] = useState<number>(0);
   const [maxAttempts, setMaxAttempts] = useState<number>(0);
   const [isWinModalOpen, setWinModalOpen] = useState<boolean>(false);
+  const [isLoseModalOpen, setIsLoseModalOpen] = useState<boolean>(false);
   const [difficulty, setDifficulty] = useState<difficultyType>("easy");
   const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([
@@ -65,7 +67,9 @@ const Main = () => {
   const handleNewGame = () => {
     setIsPending(true);
     setWinModalOpen(false);
+    setIsLoseModalOpen(false);
     setMatchedCards([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+    setFlippedCards([]);
     setAttempts(0);
     shuffleCards();
     setTimeout(() => {
@@ -114,7 +118,7 @@ const Main = () => {
       (difficulty === "hard" || difficulty === "mid") &&
       matchedCards.length < 16
     ) {
-      setWinModalOpen(true);
+      setIsLoseModalOpen(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempts]);
@@ -196,6 +200,7 @@ const Main = () => {
         </div>
       </div>
       {isWinModalOpen && <WinModal attempts={attempts} />}
+      {isLoseModalOpen && <LoseModal attempts={attempts} />}
     </handleNewGameContext.Provider>
   );
 };
