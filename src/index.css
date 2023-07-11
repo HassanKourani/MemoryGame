@@ -5,3 +5,12 @@
 .center {
   @apply flex justify-center items-center;
 }
+.card {
+  @apply bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 shadow-2xl w-32 h-32 text-white flex items-center justify-center overflow-hidden p-4 rounded-md;
+}
+
+body {
+  background: url("./Images//blob-scene-haikei.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -9,7 +9,7 @@ const Card = ({
 }: CardProps) => {
   return (
     <div
-      className="bg-gray-400 w-32 h-32 text-white center overflow-hidden p-4 rounded-md hover:bg-gray-600"
+      className="card"
       onClick={() => {
         !isPending && handleFlip(card);
       }}
@@ -22,7 +22,11 @@ const Card = ({
           className="rounded-md"
         />
       ) : (
-        <span className="text-4xl">?</span>
+        <img
+          src={require(`../Images/question-mark_5726775.png`)}
+          alt={"unknown"}
+          className="rounded-md"
+        />
       )}
     </div>
   );

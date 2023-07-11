@@ -14,23 +14,22 @@ const Main = () => {
 
   const [cards, setCards] = useState([
     { id: 1, image: "apple.png" },
-    { id: 2, image: "bmw.jpg" },
-    { id: 3, image: "google.png" },
-    { id: 4, image: "merc.jpg" },
-    { id: 5, image: "nasa.png" },
-    { id: 6, image: "nike.jpg" },
-    { id: 7, image: "pepsi.png" },
-    { id: 8, image: "starbucks.png" },
+    { id: 2, image: "banana.png" },
+    { id: 3, image: "orange.png" },
+    { id: 4, image: "pear.png" },
+    { id: 5, image: "pineapple.png" },
+    { id: 6, image: "strawberry.png" },
+    { id: 7, image: "watermelon.png" },
+    { id: 8, image: "grapes.png" },
     { id: 9, image: "apple.png" },
-    { id: 10, image: "bmw.jpg" },
-    { id: 11, image: "google.png" },
-    { id: 12, image: "merc.jpg" },
-    { id: 13, image: "nasa.png" },
-    { id: 14, image: "nike.jpg" },
-    { id: 15, image: "pepsi.png" },
-    { id: 16, image: "starbucks.png" },
+    { id: 10, image: "banana.png" },
+    { id: 11, image: "orange.png" },
+    { id: 12, image: "pear.png" },
+    { id: 13, image: "pineapple.png" },
+    { id: 14, image: "strawberry.png" },
+    { id: 15, image: "watermelon.png" },
+    { id: 16, image: "grapes.png" },
   ]);
-  useEffect(() => {}, []);
 
   const shuffleCards = () => {
     const shuffledCards = [...cards];
@@ -79,8 +78,8 @@ const Main = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-10">
-      <div className="center text-4xl">
-        username:<b>{state?.username}</b>
+      <div className="center text-4xl text-white">
+        username:<b className="text-yellow-600">{state?.username}</b>
       </div>
 
       <div className="center">
@@ -104,7 +103,7 @@ const Main = () => {
         >
           New Game
         </button>
-        <span>Count: 0</span>
+        <span className="text-white">Count: 0</span>
         <button
           className="p-4 text-white bg-red-500 hover:bg-red-600"
           onClick={() => navigate("/")}
