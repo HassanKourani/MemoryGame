@@ -12,8 +12,6 @@ const Singup = () => {
   return (
     <>
       <div className="h-screen center flex-col">
-        {/* <h1 className="text-4xl text-orange-100 font-bold m-4 border border-white w-max p-2"></h1> */}
-
         <h1 className="text-4xl sm:text-6xl font-bold text-center text-white border-b-2 border-white w-max p-4">
           MEMORY GAME
         </h1>

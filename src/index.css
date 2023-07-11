@@ -10,9 +10,19 @@
 }
 .card {
   @apply cursor-pointer bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 shadow-2xl w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 text-white flex items-center justify-center overflow-hidden p-4 rounded-md;
+  perspective: 1000px;
+}
+
+.card img {
+  backface-visibility: hidden;
+  transition: transform 0.3s;
+}
+
+.card.flipped img {
+  transform: rotateY(360deg);
 }
 .win-modal {
-  @apply border-2 border-white h-60 w-96 rounded-lg bg-gradient-to-br from-orange-100 to-orange-400 shadow-lg text-white flex flex-col items-center justify-around;
+  @apply border-2 border-white h-60 w-80 sm:w-96 rounded-lg bg-gradient-to-br from-orange-100 to-orange-400 shadow-lg text-white flex flex-col items-center justify-around;
 }
 
 body {
