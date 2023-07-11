@@ -5,11 +5,14 @@ import { CardType } from "../Interfaces/Card";
 import PlayAgainBtn from "../Components/PlayAgainBtn";
 import WinModal from "../Components/WinModal";
 export const handleNewGameContext = createContext<() => void>(() => {});
+type difficultyType = "easy" | "hard" | "mid";
 const Main = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const [attempts, setAttempts] = useState(0);
-  const [isWinModalOpen, setWinModalOpen] = useState(false);
+  const [attempts, setAttempts] = useState<number>(0);
+  const [maxAttempts, setMaxAttempts] = useState<number>(0);
+  const [isWinModalOpen, setWinModalOpen] = useState<boolean>(false);
+  const [difficulty, setDifficulty] = useState<difficultyType>("easy");
   const [flippedCards, setFlippedCards] = useState<CardType[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
@@ -105,14 +108,65 @@ const Main = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchedCards]);
+  useEffect(() => {
+    if (
+      attempts >= maxAttempts &&
+      (difficulty === "hard" || difficulty === "mid") &&
+      matchedCards.length < 16
+    ) {
+      setWinModalOpen(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attempts]);
+
+  const handleChangeDifficulty = (diff: difficultyType) => {
+    if (isPending) return;
+    setDifficulty(diff);
+    handleNewGame();
+    if (diff === "mid") setMaxAttempts(12);
+    else if (diff === "hard") setMaxAttempts(8);
+  };
 
   return (
     <handleNewGameContext.Provider value={handleNewGame}>
       <div className="flex flex-col justify-center items-center gap-10 p-2">
         <div className="center text-2xl sm:text-4xl text-white gap-2">
-          <span>Username: </span>
+          <span>Welcome </span>
           <b className="text-yellow-600"> {state?.username}</b>
         </div>
+        <div className="flex gap-8">
+          <div
+            className={`center difficulty ${
+              difficulty === "easy" && "bg-orange-200"
+            }`}
+            onClick={() => handleChangeDifficulty("easy")}
+          >
+            Easy
+          </div>
+          <div
+            className={`center difficulty ${
+              difficulty === "mid" && "bg-orange-200"
+            }`}
+            onClick={() => handleChangeDifficulty("mid")}
+          >
+            Medium
+          </div>
+          <div
+            className={`center difficulty ${
+              difficulty === "hard" && "bg-orange-200"
+            }`}
+            onClick={() => handleChangeDifficulty("hard")}
+          >
+            Hard
+          </div>
+        </div>
+        <span className="text-white">
+          {difficulty === "mid"
+            ? "You only have 12 attempts!"
+            : difficulty === "hard"
+            ? "You only have 8 attempts!"
+            : ""}
+        </span>
 
         <div className="center">
           <div className="grid grid-cols-4 gap-4">

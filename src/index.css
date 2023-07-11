@@ -24,6 +24,12 @@
 .win-modal {
   @apply border-2 border-white h-60 w-80 sm:w-96 rounded-lg bg-gradient-to-br from-orange-100 to-orange-400 shadow-lg text-white flex flex-col items-center justify-around;
 }
+.signup-input {
+  @apply border border-orange-200 p-2 rounded-md outline-none bg-orange-200/50 placeholder:text-white/50 w-80 text-white;
+}
+.difficulty {
+  @apply border border-white w-24 h-12 text-white cursor-pointer hover:bg-white hover:text-orange-200 rounded-md;
+}
 
 body {
   background: url("./Images//blob-scene-haikei.svg");
