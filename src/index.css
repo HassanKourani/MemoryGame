@@ -21,8 +21,3 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
-.signup {
-  background: url("./Images/layered-steps-haikei.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
