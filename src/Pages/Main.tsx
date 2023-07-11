@@ -49,6 +49,7 @@ const Main = () => {
   };
 
   useEffect(() => {
+    if (!state?.username) navigate("/");
     shuffleCards();
     setTimeout(() => {
       setMatchedCards([]);
@@ -109,7 +110,7 @@ const Main = () => {
     <handleNewGameContext.Provider value={handleNewGame}>
       <div className="flex flex-col justify-center items-center gap-10 p-2">
         <div className="center text-2xl sm:text-4xl text-white gap-2">
-          <span>username: </span>
+          <span>Username: </span>
           <b className="text-yellow-600"> {state?.username}</b>
         </div>
 
@@ -133,14 +134,14 @@ const Main = () => {
             attempts: {attempts}
           </span>
           <button
-            className="p-4 text-white bg-red-500 hover:bg-red-600 w-24"
+            className="p-2 text-white bg-red-500 hover:bg-red-600 w-24 rounded-md"
             onClick={() => navigate("/")}
           >
             Logout
           </button>
         </div>
       </div>
-      {isWinModalOpen && <WinModal />}
+      {isWinModalOpen && <WinModal attempts={attempts} />}
     </handleNewGameContext.Provider>
   );
 };

@@ -5,7 +5,7 @@ const PlayAgainBtn = () => {
   const handleNewGame = useContext(handleNewGameContext);
   return (
     <button
-      className="p-4 text-white bg-green-500 hover:bg-green-700 w-24"
+      className="p-2 text-white bg-green-500 hover:bg-green-700 w-24 rounded-md"
       onClick={() => handleNewGame()}
     >
       Reset
