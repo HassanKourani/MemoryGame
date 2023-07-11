@@ -1,4 +1,4 @@
-import { CardProps } from "../Interfaces/Card";
+import { CardProps, CardType } from "../Interfaces/Card";
 
 const Card = ({
   card,
@@ -14,7 +14,7 @@ const Card = ({
         !isPending && handleFlip(card);
       }}
     >
-      {flippedCards.some((c: any) => c.id === card.id) ||
+      {flippedCards.some((c: CardType) => c.id === card.id) ||
       matchedCards.includes(card.id) ? (
         <img
           src={require(`../Images/${card.image}`)}
