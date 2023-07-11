@@ -60,6 +60,7 @@ const Main = () => {
 
   const handleNewGame = () => {
     setIsPending(true);
+    setWinModalOpen(false);
     setMatchedCards([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
     setAttempts(0);
     shuffleCards();
@@ -70,11 +71,16 @@ const Main = () => {
   };
 
   const handleFlip = (card: CardType) => {
-    if (flippedCards.length === 2 || matchedCards.includes(card.id)) {
+    const cardExists = flippedCards.find((c) => c.id === card.id);
+    if (
+      flippedCards.length === 2 ||
+      matchedCards.includes(card.id) ||
+      cardExists
+    ) {
       return;
     }
 
-    !isPending && setFlippedCards([...flippedCards, card]);
+    setFlippedCards([...flippedCards, card]);
 
     if (flippedCards.length === 1) {
       setAttempts(attempts + 1);
@@ -101,14 +107,14 @@ const Main = () => {
 
   return (
     <handleNewGameContext.Provider value={handleNewGame}>
-      <div className="flex flex-col justify-center items-center gap-10">
+      <div className="flex flex-col justify-center items-center gap-10 p-2">
         <div className="center text-2xl sm:text-4xl text-white gap-2">
           <span>username: </span>
           <b className="text-yellow-600"> {state?.username}</b>
         </div>
 
         <div className="center">
-          <div className="grid grid-cols-4 gap-4 cursor-pointer ">
+          <div className="grid grid-cols-4 gap-4">
             {cards.map((card) => (
               <Card
                 key={card.id}
