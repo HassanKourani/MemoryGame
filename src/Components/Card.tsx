@@ -1,4 +1,5 @@
 import { CardProps, CardType } from "../Interfaces/Card";
+import { useState, useEffect } from "react";
 
 const Card = ({
   card,
@@ -7,9 +8,20 @@ const Card = ({
   flippedCards,
   matchedCards,
 }: CardProps) => {
+  const [isFlipped, setIsFlipped] = useState<boolean>(
+    flippedCards.some((c) => c.id === card.id)
+  );
+  useEffect(() => {
+    setIsFlipped(flippedCards.some((c) => c.id === card.id));
+
+    return () => {
+      setIsFlipped(false);
+    };
+  }, [flippedCards, card.id]);
+
   return (
     <div
-      className="card"
+      className={`card ${isFlipped ? "flipped" : ""}`}
       onClick={() => {
         !isPending && handleFlip(card);
       }}
