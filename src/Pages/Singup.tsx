@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Singup = () => {
   const [username, setUsername] = useState<string>("");
