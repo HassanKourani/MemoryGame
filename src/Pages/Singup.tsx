@@ -6,7 +6,7 @@ const Singup = () => {
   const navigate = useNavigate();
   const handleSignup = () => {
     username.length < 3
-      ? setError("username must be more than 3 chars.")
+      ? setError("username must be more than 3 characters.")
       : navigate("/main", { state: { username: username } });
   };
   return (
@@ -19,17 +19,17 @@ const Singup = () => {
           <input
             name="username"
             placeholder="Enter username here"
-            className="border border-orange-200 p-2 rounded-md outline-none bg-orange-200/50 placeholder:text-white/50 w-80 text-white"
+            className="signup-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
+          <span className="text-xs text-red-500 p-1 mt-2">{error}</span>
           <button
             onClick={handleSignup}
-            className="mt-4 bg-orange-100 text-white p-2 rounded-md float-right w-80 hover:bg-orange-200"
+            className="mt-4 bg-orange-200 text-white p-2 rounded-md float-right w-80 hover:bg-orange-200"
           >
             SignUp
           </button>
-          <span className="text-xs text-red-500 p-1 mt-2">{error}</span>
         </div>
       </div>
     </>
