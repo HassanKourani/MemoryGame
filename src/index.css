@@ -5,6 +5,9 @@
 .center {
   @apply flex justify-center items-center;
 }
+.center-col {
+  @apply flex flex-col justify-center items-center;
+}
 .card {
   @apply cursor-pointer bg-gradient-to-br from-yellow-500 to-yellow-600 hover:from-yellow-400 hover:to-yellow-500 shadow-2xl w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 text-white flex items-center justify-center overflow-hidden p-4 rounded-md;
 }
@@ -17,4 +20,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+.signup {
+  background: url("./Images/layered-steps-haikei.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
